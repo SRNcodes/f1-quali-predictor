@@ -39,9 +39,11 @@ def test_first_round_has_no_training_rows():
     """Round 1 has no prior data, so it must not appear in the training set at all."""
     season = make_fake_season()
     train_df = build_training_set(season)
-    assert train_df.empty or 1 not in season[season["round"] == 1]["round"].isin(
-        train_df.index
-    ), "Round 1 should not produce trainable rows (no prior races exist)."
+    first_round = season["round"].min()
+    non_first_round_rows = len(season[season["round"] != first_round])
+    assert len(train_df) == non_first_round_rows, (
+        "Round 1 should not produce trainable rows (no prior races exist)."
+    )
 
 
 def test_training_set_size_matches_expected_rows():

@@ -27,7 +27,7 @@ X_COLS = [
     "driver_season_avg_delta",
     "driver_recent_avg_delta",
     "constructor_season_avg_delta",
-    "driver_baku_last_year_delta",
+    "driver_circuit_last_year_delta",
 ]
 
 
